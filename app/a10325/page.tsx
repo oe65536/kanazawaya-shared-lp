@@ -54,7 +54,7 @@ export default function A10325Page() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans text-gray-800">
+    <div className="min-h-screen bg-[#f0f9ff] font-sans text-gray-800">
       {/* HEADER */}
       <header className="bg-white shadow-sm border-b-4 border-sky-600 sticky top-0 z-50">
         <div className="max-w-6xl mx-auto py-5 px-6 flex flex-col md:flex-row items-center justify-between">
@@ -75,17 +75,31 @@ export default function A10325Page() {
         </div>
       </header>
 
+      {/* SIGNBOARD BANNER */}
+      <div className="w-full shadow-lg">
+        {/*
+          元画像の比率（幅768px、高さ449px）に基づき、
+          「上と左右を一切カットせず、下から27%（表示部分が高さの73%）だけをカット」するよう
+          アスペクト比を「768 / 328」に正確に指定しています（449 × 0.73 ≒ 328）。
+         */}
+        <img
+          src="/kanban1.jpg"
+          alt="金沢屋 看板"
+          className="w-full aspect-[768/328] object-cover object-top"
+        />
+      </div>
+
       {/* HERO SECTION */}
-      <section className="bg-gradient-to-br from-sky-50 to-cyan-100 py-20 px-4 text-center">
+      <section className="bg-gradient-to-b from-sky-500 to-sky-400 py-16 px-4 text-center shadow-inner">
         <div className="max-w-4xl mx-auto">
-          <span className="inline-block py-1 px-4 rounded-full bg-sky-200 text-sky-900 font-bold mb-6 shadow-sm border border-sky-300">
+          <span className="inline-block py-1 px-5 rounded-full bg-white/20 text-white font-extrabold mb-6 shadow-sm border border-white/40 backdrop-blur-sm">
             実績紹介
           </span>
-          <h2 className="text-4xl md:text-5xl font-black text-gray-900 leading-tight mb-8">
+          <h2 className="text-4xl md:text-5xl font-black text-white leading-tight mb-8 drop-shadow-md">
             見違えるほど綺麗に！<br />
-            <span className="text-sky-600">張替ビフォーアフター</span>
+            <span className="text-yellow-300">張替ビフォーアフター</span>
           </h2>
-          <p className="text-lg md:text-xl text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-sky-50 font-bold max-w-2xl mx-auto leading-relaxed drop-shadow">
             長年の使用で傷んだ襖や障子、網戸、畳。そのままにしていませんか？
             金沢屋の職人が心を込めて、新品同様に美しく蘇らせます。
           </p>
@@ -188,7 +202,7 @@ export default function A10325Page() {
       </section>
 
       {/* CTA SECTION */}
-      <section className="bg-gradient-to-t from-gray-900 to-gray-800 text-white py-20 px-6 text-center mt-10">
+      <section className="bg-gradient-to-t from-sky-800 to-sky-600 text-white py-20 px-6 text-center mt-10 shadow-inner">
         <h2 className="text-3xl md:text-4xl font-bold mb-6">張替に関するお悩みは、お気軽にご相談ください</h2>
         <p className="text-gray-300 font-medium mb-10 max-w-2xl mx-auto">
           一枚からでも喜んでお伺いいたします。お見積りは無料です。<br className="hidden md:inline" />まずは今の状態を見させてください。
@@ -202,7 +216,7 @@ export default function A10325Page() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-gray-900 text-gray-400 py-8 text-center border-t border-gray-800 font-sm">
+      <footer className="bg-sky-900 text-sky-200 py-8 text-center border-t border-sky-800 text-sm">
         <p>© 2026 金沢屋 静岡葵店 All rights reserved.</p>
       </footer>
     </div>
