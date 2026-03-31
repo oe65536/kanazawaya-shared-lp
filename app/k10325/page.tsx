@@ -81,157 +81,163 @@ export default function K10325Page() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#f0f9ff] font-sans text-gray-800">
-      {/* HEADER */}
-      <header className="bg-white shadow-sm border-b-4 border-sky-600 sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto py-5 px-6 flex flex-col md:flex-row items-center justify-between">
-          <div className="flex flex-col items-center md:items-start">
-            <h1 className="text-3xl font-extrabold text-sky-800 tracking-tight">
-              金沢屋
-            </h1>
-            <p className="text-sm text-gray-500 mt-1 font-bold">静岡葵店・日本平店</p>
+    <div className="h-[100dvh] overflow-y-auto overflow-x-hidden snap-y snap-mandatory bg-[#f0f9ff] font-sans text-gray-800 flex flex-col scroll-smooth">
+      
+      {/* PAGE 1: HEADER + SIGNBOARD + HERO */}
+      <section className="h-[100dvh] w-full snap-start shrink-0 flex flex-col relative">
+        {/* HEADER */}
+        <header className="bg-white shadow-sm border-b-2 border-sky-600 shrink-0">
+          <div className="max-w-6xl mx-auto py-2 px-4 flex items-center justify-between">
+            <div className="flex flex-col items-start">
+              <h1 className="text-xl sm:text-2xl font-extrabold text-sky-800 tracking-tight leading-none">
+                金沢屋
+              </h1>
+              <p className="text-[10px] sm:text-xs text-gray-500 font-bold mt-1">静岡葵店・日本平店</p>
+            </div>
+            <div className="flex gap-2">
+              <a
+                href="https://kanazawaya-shizuokaaoi.o-e.jp/"
+                className="bg-sky-600 hover:bg-sky-700 text-white font-bold py-1.5 px-3 text-[10px] sm:text-xs rounded-full shadow transition"
+              >
+                静岡葵店
+              </a>
+              <a
+                href="https://kanazawaya-nihondaira.o-e.jp/"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-3 text-[10px] sm:text-xs rounded-full shadow transition"
+              >
+                日本平店
+              </a>
+            </div>
           </div>
-          <div className="mt-4 md:mt-0 flex gap-4">
-            <a
-              href="https://kanazawaya-shizuokaaoi.o-e.jp/"
-              className="bg-sky-600 hover:bg-sky-700 text-white font-bold py-2 px-6 rounded-full shadow transition"
-            >
-              静岡葵店へ相談
-            </a>
-            <a
-              href="https://kanazawaya-nihondaira.o-e.jp/"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-full shadow transition"
-            >
-              日本平店へ相談
-            </a>
-          </div>
+        </header>
+
+        {/* SIGNBOARD BANNER */}
+        <div className="w-full shadow-lg shrink-0">
+          <img
+            src="/kanban1.jpg"
+            alt="金沢屋 看板"
+            className="w-full aspect-[768/328] object-cover object-top"
+          />
         </div>
-      </header>
 
-      {/* SIGNBOARD BANNER */}
-      <div className="w-full shadow-lg">
-        {/*
-          元画像の比率（幅768px、高さ449px）に基づき、
-          「上と左右を一切カットせず、下から27%（表示部分が高さの73%）だけをカット」するよう
-          アスペクト比を「768 / 328」に正確に指定しています（449 × 0.73 ≒ 328）。
-         */}
-        <img
-          src="/kanban1.jpg"
-          alt="金沢屋 看板"
-          className="w-full aspect-[768/328] object-cover object-top"
-        />
-      </div>
-
-      {/* HERO SECTION */}
-      <section className="bg-gradient-to-b from-sky-500 to-sky-400 py-16 px-4 text-center shadow-inner">
-        <div className="max-w-4xl mx-auto">
-          <span className="inline-block py-1.5 px-6 rounded-full bg-white/20 text-white font-extrabold mb-6 shadow-sm border border-white/40 backdrop-blur-sm tracking-widest text-sm">
-            ご自宅に潜む危険、放置していませんか？
-          </span>
-          <h2 className="text-4xl md:text-5xl font-black text-white leading-tight mb-8 drop-shadow-md">
-            プロの目でチェック！<br />
-            <span className="text-yellow-300">おうち無料点検</span>
-          </h2>
-          <p className="text-lg md:text-xl text-sky-50 font-bold max-w-2xl mx-auto leading-relaxed drop-shadow">
-            毎日の生活の中で見落としがちな小さな不具合が、思わぬ事故やケガ、大規模な工事の原因になることも。<br />
-            私たち金沢屋が、ご自宅の「安全」と「快適」を1点1点入念にチェックいたします！
-          </p>
+        {/* HERO SECTION */}
+        <div className="flex-grow bg-gradient-to-b from-sky-500 to-sky-400 py-6 px-4 text-center flex flex-col justify-center items-center shadow-inner">
+          <div className="max-w-4xl mx-auto w-full">
+            <span className="inline-block py-1.5 px-4 rounded-full bg-white/20 text-white font-extrabold mb-4 shadow-sm border border-white/40 backdrop-blur-sm tracking-widest text-[10px] sm:text-xs">
+              ご自宅に潜む危険、放置していませんか？
+            </span>
+            <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-4 drop-shadow-md">
+              プロの目でチェック！<br />
+              <span className="text-yellow-300">おうち無料点検</span>
+            </h2>
+            <p className="text-xs sm:text-base md:text-lg text-sky-50 font-bold max-w-2xl mx-auto leading-relaxed drop-shadow">
+              毎日の生活の中で見落としがちな小さな不具合が、思わぬ事故やケガ、大規模な工事の原因になることも。<br />
+              私たち金沢屋が、ご自宅の「安全」と「快適」を1点1点入念にチェックいたします！
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* INSPECTION CHECKLIST LIST */}
-      <main className="max-w-5xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+      {/* PAGE 2: CHECKLIST + CTA + FOOTER */}
+      <section className="h-[100dvh] w-full snap-start shrink-0 flex flex-col relative bg-[#f0f9ff]">
+        
+        {/* SCROLLABLE INNER CONTENT */}
+        <main className="flex-grow overflow-y-auto px-2 py-4 sm:px-4 w-full max-w-5xl mx-auto">
+          
+          <div className="text-center mb-4">
+            <h3 className="text-base sm:text-xl font-extrabold text-gray-800 mb-2 border-b-2 border-sky-500 pb-1 inline-block">
+              無料点検 チェック項目一覧
+            </h3>
+            <p className="text-[10px] text-gray-600 font-medium">どのような場所を確認するのか、どのようなリスクを防げるのかリストにまとめました。</p>
+          </div>
 
-        <div className="text-center mb-16">
-          <h3 className="text-3xl font-extrabold text-gray-800 mb-4 border-b-4 border-sky-500 pb-2 inline-block">
-            無料点検 チェック項目一覧
-          </h3>
-          <p className="text-gray-600 font-medium">どのような場所を確認するのか、どのようなリスクを防げるのかリストにまとめました。</p>
-        </div>
+          <div className="space-y-4">
+            {inspectionData.map((categoryData, idx) => (
+              <div key={idx} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+                <div className="bg-sky-600 py-1.5 px-3 text-white flex items-center gap-2">
+                  <span className="text-sm border-r border-white/30 pr-2">📋</span>
+                  <h4 className="text-[11px] sm:text-sm font-bold leading-none">{categoryData.category}</h4>
+                </div>
 
-        <div className="space-y-12">
-          {inspectionData.map((categoryData, idx) => (
-            <div key={idx} className="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
-              <div className="bg-sky-600 py-4 px-6 text-white flex items-center gap-3">
-                <span className="text-2xl">📋</span>
-                <h4 className="text-2xl font-bold">{categoryData.category}</h4>
-              </div>
-
-              <div className="overflow-x-auto">
-                <table className="w-full text-left whitespace-nowrap min-w-max md:min-w-0">
-                  <thead className="bg-sky-50 border-b border-sky-200">
-                    <tr>
-                      <th className="px-6 py-4 font-bold text-gray-600 w-24 text-center">目的</th>
-                      <th className="px-6 py-4 font-bold text-gray-600">チェック項目（現状の確認）</th>
-                      <th className="px-6 py-4 font-bold text-gray-600">放置した際のリスク・改善のメリット</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100">
-                    {categoryData.items.map((item, itemIdx) => (
-                      <tr key={itemIdx} className="hover:bg-gray-50 transition">
-                        <td className="px-6 py-4 text-center font-bold">
-                          {item.type === "安全" ? (
-                            <span className="inline-flex items-center gap-1 bg-red-100 text-red-700 px-3 py-1 rounded-full text-sm border border-red-200 font-extrabold">
-                              ⚠ 安全
-                            </span>
-                          ) : (
-                            <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm border border-blue-200 font-extrabold">
-                              ✨ 快適
-                            </span>
-                          )}
-                        </td>
-                        <td className="px-6 py-4 text-gray-800 font-medium text-wrap max-w-xs">{item.item}</td>
-                        <td className="px-6 py-4 text-gray-600 text-sm whitespace-normal leading-relaxed">{item.risk}</td>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left whitespace-nowrap min-w-max md:min-w-0">
+                    <thead className="bg-sky-50 border-b border-sky-200">
+                      <tr>
+                        <th className="px-2 py-1.5 font-bold text-gray-600 w-12 text-center text-[9px] sm:text-[10px]">目的</th>
+                        <th className="px-2 py-1.5 font-bold text-gray-600 text-[9px] sm:text-[10px]">チェック項目（現状の確認）</th>
+                        <th className="px-2 py-1.5 font-bold text-gray-600 text-[9px] sm:text-[10px]">放置した際のリスク・改善のメリット</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100">
+                      {categoryData.items.map((item, itemIdx) => (
+                        <tr key={itemIdx} className="hover:bg-gray-50 transition">
+                          <td className="px-1.5 py-1.5 text-center font-bold align-top">
+                            {item.type === "安全" ? (
+                              <span className="inline-flex items-center gap-0.5 bg-red-100 text-red-700 px-1 py-0.5 rounded text-[8px] sm:text-[9px] border border-red-200 font-extrabold whitespace-nowrap">
+                                ⚠ 安全
+                              </span>
+                            ) : (
+                              <span className="inline-flex items-center gap-0.5 bg-blue-100 text-blue-700 px-1 py-0.5 rounded text-[8px] sm:text-[9px] border border-blue-200 font-extrabold whitespace-nowrap">
+                                ✨ 快適
+                              </span>
+                            )}
+                          </td>
+                          <td className="px-2 py-1.5 text-gray-800 font-medium text-wrap text-[9px] sm:text-[10px] leading-snug align-top break-words max-w-[120px] sm:max-w-xs">{item.item}</td>
+                          <td className="px-2 py-1.5 text-gray-600 text-[9px] sm:text-[10px] whitespace-normal leading-snug align-top break-words">{item.risk}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA SECTION */}
+          <section className="bg-gradient-to-t from-sky-800 to-sky-600 text-white py-5 px-4 text-center mt-6 rounded-xl shadow-md w-full mb-2">
+            <h2 className="text-sm md:text-xl font-black mb-2 leading-tight">
+              ご自宅の点検、ぜひお任せください
+            </h2>
+            <p className="text-[9px] md:text-xs text-gray-100 font-medium mb-4 max-w-3xl mx-auto leading-relaxed">
+              「我が家は大丈夫かな？」「そういえばあそこが気になっている…」<br className="hidden sm:block" />
+              どんな小さなことでも構いません。まずは無料点検をご活用ください。
+            </p>
+
+            <div className="flex flex-col sm:flex-row justify-center gap-3 max-w-3xl mx-auto">
+              {/* 静岡葵店 */}
+              <div className="bg-white rounded-lg p-2.5 shadow-sm flex-1 text-gray-900 border-2 border-sky-500 flex items-center justify-between">
+                <div>
+                  <h3 className="text-[11px] sm:text-xs font-bold text-sky-800 text-left">静岡葵店</h3>
+                  <div className="text-[8px] sm:text-[9px] text-gray-600 mt-0.5 text-left">
+                    葵区安西五丁目５７
+                  </div>
+                </div>
+                <a href="https://kanazawaya-shizuokaaoi.o-e.jp/" className="bg-sky-600 text-white font-bold py-1.5 px-3 text-[9px] sm:text-[10px] rounded-full hover:bg-sky-700 transition transform hover:-translate-y-0.5 whitespace-nowrap">
+                  Webサイトへ
+                </a>
+              </div>
+
+              {/* 日本平店 */}
+              <div className="bg-white rounded-lg p-2.5 shadow-sm flex-1 text-gray-900 border-2 border-blue-500 flex items-center justify-between">
+                <div>
+                  <h3 className="text-[11px] sm:text-xs font-bold text-blue-800 text-left">日本平店</h3>
+                  <div className="text-[8px] sm:text-[9px] text-gray-600 mt-0.5 text-left">
+                    担当エリアへ迅速訪問
+                  </div>
+                </div>
+                <a href="https://kanazawaya-nihondaira.o-e.jp/" className="bg-blue-600 text-white font-bold py-1.5 px-3 text-[9px] sm:text-[10px] rounded-full hover:bg-blue-700 transition transform hover:-translate-y-0.5 whitespace-nowrap">
+                  Webサイトへ
+                </a>
               </div>
             </div>
-          ))}
-        </div>
-      </main>
+          </section>
+        </main>
 
-      {/* CTA SECTION */}
-      <section className="bg-gradient-to-t from-sky-800 to-sky-600 text-white py-20 px-6 text-center mt-10 shadow-inner">
-        <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
-          ご自宅の点検、ぜひお任せください
-        </h2>
-        <p className="text-gray-100 font-medium text-lg mb-12 max-w-3xl mx-auto leading-relaxed">
-          「我が家は大丈夫かな？」「そういえばあそこが気になっている…」<br className="hidden md:inline" />
-          どんな小さなことでも構いません。まずは無料点検をご活用ください。<br />
-          お近くの店舗へお気軽にお問い合わせください！
-        </p>
-
-        <div className="flex flex-col md:flex-row justify-center gap-6 max-w-3xl mx-auto">
-          {/* 静岡葵店 */}
-          <div className="bg-white rounded-2xl p-6 shadow-xl flex-1 text-gray-900 border-4 border-sky-500">
-            <h3 className="text-2xl font-bold mb-4 text-sky-800">金沢屋 静岡葵店</h3>
-            <a href="https://kanazawaya-shizuokaaoi.o-e.jp/" className="block bg-sky-600 text-white font-bold py-4 px-6 rounded-full hover:bg-sky-700 transition transform hover:-translate-y-1 mb-3">
-              Webサイトへ
-            </a>
-            <div className="bg-gray-100 p-3 rounded-lg text-sm font-medium text-gray-600">
-              静岡市葵区安西五丁目５７ 安西ビル１階A号室
-            </div>
-          </div>
-
-          {/* 日本平店 */}
-          <div className="bg-white rounded-2xl p-6 shadow-xl flex-1 text-gray-900 border-4 border-blue-500">
-            <h3 className="text-2xl font-bold mb-4 text-blue-800">金沢屋 日本平店</h3>
-            <a href="https://kanazawaya-nihondaira.o-e.jp/" className="block bg-blue-600 text-white font-bold py-4 px-6 rounded-full hover:bg-blue-700 transition transform hover:-translate-y-1 mb-3">
-              Webサイトへ
-            </a>
-            <div className="bg-gray-100 p-3 rounded-lg text-sm font-medium text-gray-600">
-              担当エリアのお客様へ<br />迅速にお伺いします
-            </div>
-          </div>
-        </div>
+        {/* FOOTER */}
+        <footer className="bg-sky-900 text-sky-200 py-3 text-center border-t border-sky-800 text-[9px] sm:text-[10px] shrink-0 mt-auto z-10 w-full">
+          <p>© 2026 金沢屋 静岡葵店 / 日本平店 All rights reserved.</p>
+        </footer>
       </section>
-
-      {/* FOOTER */}
-      <footer className="bg-sky-900 text-sky-200 py-8 text-center border-t border-sky-800 text-sm">
-        <p>© 2026 金沢屋 静岡葵店 / 日本平店 All rights reserved.</p>
-      </footer>
     </div>
   );
 }
