@@ -39,6 +39,14 @@ export default function A10325Page() {
   return (
     <div className="h-[100dvh] overflow-y-auto overflow-x-hidden snap-y snap-mandatory bg-black font-sans text-gray-800 flex flex-col scroll-smooth">
       
+      {/* 行書体・筆文字系のWebフォント（Google Fonts: Yuji Syuku）を読み込みスマートフォンでの明朝体化を防ぐ */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @import url('https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap');
+        .font-gyosho {
+          font-family: 'Yuji Syuku', 'HG草書体', 'HG行書体', 'HGS行書体', 'ヒラギノ行書 W4', serif;
+        }
+      `}} />
+
       {/* === 1ページ目 (全体表示) === */}
       <section className="h-[100dvh] w-full snap-start shrink-0 flex items-center justify-center bg-black overflow-hidden relative p-0 m-0">
         <div 
@@ -72,8 +80,8 @@ export default function A10325Page() {
             {/* Bottom Text */}
             <div className="flex items-center justify-center w-full" style={{ gridRowStart: 24 }}>
               <p 
-                className="font-normal text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] tracking-widest leading-none"
-                style={{ fontFamily: "'HG草書体', 'HG行書体', 'HGS行書体', 'ヒラギノ行書 W4', serif", fontSize: "5.5cqi" }}
+                className="font-normal font-gyosho text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] tracking-widest leading-none"
+                style={{ fontSize: "5.5cqi" }}
               >
                 替えるだけで、毎日が変わる
               </p>
@@ -105,10 +113,9 @@ export default function A10325Page() {
 
           {/* Text Overlays accurately mapped to the image */}
           <div 
-            className="absolute inset-0 grid"
+            className="absolute inset-0 grid font-gyosho"
             style={{ 
-              gridTemplateRows: "repeat(24, minmax(0, 1fr))",
-              fontFamily: "'HG草書体', 'HG行書体', 'HGS行書体', 'ヒラギノ行書 W4', serif" 
+              gridTemplateRows: "repeat(24, minmax(0, 1fr))"
             }}
           >
             {/* The middle 22 units for the 6 rows of explanations */}
