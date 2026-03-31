@@ -13,6 +13,7 @@ export default function K10325Page() {
     const pageChunks = [
       {
         title: "外・玄関",
+        startIdx: 1,
         items: [
           { type: "安全", item: "ドア・引き戸の重さ、閉まる速度", risk: "無理な力による手首・腰の負担、転倒リスク", solution: "戸車の交換、ドアクローザー調整、ドア交換" },
           { type: "安全", item: "網戸の破れ、立て付け", risk: "虫の侵入、防犯上の不安", solution: "網戸の張替、枠の調整、戸車調整or交換" },
@@ -28,6 +29,7 @@ export default function K10325Page() {
       },
       {
         title: "廊下・ドア",
+        startIdx: 11,
         items: [
           { type: "安全", item: "夜間の足元の明るさ", risk: "夜のトイレ移動時などの転倒リスク", solution: "足元灯・センサーライトの設置・常夜灯の設置" },
           { type: "安全", item: "敷居・床のちょっとした段差", risk: "すり足になることでの、つまずき転倒リスク", solution: "敷居スベリの交換、簡易的な段差解消、スロープの設置" },
@@ -39,6 +41,7 @@ export default function K10325Page() {
       },
       {
         title: "室内・全般",
+        startIdx: 17,
         items: [
           { type: "安全", item: "階段の滑りやすさ・段鼻の見えにくさ", risk: "踏み外しによる重大な転落事故", solution: "蓄光（光る）滑り止めテープの施工" },
           { type: "安全", item: "階段の手すり", risk: "昇降時の膝への負担、バランス崩し", solution: "両側への手すり追加、既存のガタつき補強" },
@@ -60,6 +63,7 @@ export default function K10325Page() {
       },
       {
         title: "水回り",
+        startIdx: 33,
         items: [
           { type: "安全", item: "トイレ・浴室等の扉のガタつき", risk: "開けにくさによるトイレの我慢、閉じ込めリスク", solution: "レールの調整、はずれ止め補修、ドア交換" },
           { type: "安全", item: "各所換気扇の異音、吸い込みの弱さ", risk: "湿気・結露によるカビ、ヒートショックの一因", solution: "換気扇本体の交換、内部の徹底清掃" },
@@ -79,10 +83,10 @@ export default function K10325Page() {
     ];
 
     return (
-      <div className="h-[100dvh] overflow-y-auto overflow-x-hidden snap-y snap-mandatory bg-sky-50 font-sans text-gray-800 flex flex-col scroll-smooth">
+      <div className="min-h-screen bg-sky-50 font-sans text-gray-800 flex flex-col scroll-smooth">
         
         {/* PAGE 1: HEADER + SIGNBOARD + HERO */}
-        <section className="h-[100dvh] w-full snap-start shrink-0 flex flex-col relative bg-sky-50 overflow-hidden">
+        <section className="w-full flex flex-col relative bg-sky-50 overflow-hidden">
           {/* HEADER */}
           <header className="bg-white shadow-sm border-b-2 border-sky-600 shrink-0">
             <div className="max-w-6xl mx-auto py-1 px-3 flex items-center justify-between">
@@ -97,66 +101,71 @@ export default function K10325Page() {
             </div>
           </header>
 
-          <div className="flex-grow w-full flex justify-center bg-white shadow-sm shrink-0 border-b border-sky-100 p-2 sm:p-4">
-            <img src="/kanban1.jpg" alt="金沢屋 看板" className="w-full h-full object-contain" />
+          <div className="w-full flex justify-center bg-white border-b border-sky-100 p-2 sm:p-4 pb-0">
+            <div className="w-full sm:max-w-4xl max-w-full overflow-hidden relative" style={{ aspectRatio: '768 / 305' }}>
+              <img src="/kanban1.jpg" alt="金沢屋 看板" className="w-full h-auto object-cover object-top absolute inset-0" />
+            </div>
           </div>
 
-          {/* HERO SECTION */}
-          <div className="shrink-0 bg-gradient-to-b from-sky-500 to-sky-400 py-5 px-3 text-center flex flex-col justify-center items-center shadow-inner border-t-2 border-sky-300">
+          {/* HERO SECTION - tightly shrinks to content with minimum padding */}
+          <div className="shrink-0 bg-gradient-to-b from-sky-500 to-sky-400 py-2 sm:py-3 px-2 text-center flex flex-col justify-center items-center shadow-inner border-t-2 border-sky-300">
             <div className="max-w-4xl mx-auto w-full">
-              <span className="inline-block py-1 px-3 rounded-full bg-white/20 text-white font-extrabold mb-3 shadow-sm border border-white/40 backdrop-blur-sm tracking-widest text-[9px] sm:text-xs">
+              <span className="inline-block py-0.5 px-3 mt-1 rounded-full bg-white/20 text-white font-extrabold mb-1.5 shadow-sm border border-white/40 backdrop-blur-sm tracking-widest text-[9px] sm:text-xs">
                 ご自宅に潜む危険、放置していませんか？
               </span>
-              <h2 className="text-xl sm:text-4xl md:text-5xl font-black text-white leading-tight mb-2 drop-shadow-md">
+              <h2 className="text-xl sm:text-3xl font-black text-white leading-tight drop-shadow-md">
                 プロの目でチェック！<br className="sm:hidden" />
                 <span className="text-yellow-300 sm:ml-2">おうち無料点検</span>
               </h2>
-              <p className="text-[10px] sm:text-base md:text-lg text-sky-50 font-bold max-w-2xl mx-auto leading-relaxed drop-shadow mt-3">
-                下へスワイプして、おうちのチェック項目一覧をご覧ください！↓
-              </p>
             </div>
           </div>
         </section>
 
-        {/* PAGE 2 to 6: CHECKLIST CHUNKS */}
+        {/* CHECKLIST CHUNKS */}
         {pageChunks.map((chunk, idx) => (
-          <section key={idx} className="h-[100dvh] w-full snap-start shrink-0 flex flex-col relative bg-white border-b-8 border-sky-50 pt-2 pb-6 px-1 sm:px-4">
-            <h3 className="text-sm sm:text-lg font-extrabold text-sky-800 text-center mb-1 shrink-0">
+          <section key={idx} className="w-full flex flex-col relative bg-white border-b-8 border-sky-50 pt-6 pb-8 px-2 sm:px-4">
+            <h3 className="text-base sm:text-xl font-extrabold text-sky-800 text-center mb-4 shrink-0">
               点検箇所: {chunk.title}
             </h3>
             
-            <div className="flex-grow flex flex-col justify-center min-h-0 w-full max-w-5xl mx-auto">
-              <div className="overflow-hidden border border-sky-200 rounded-md shadow-sm h-full flex flex-col">
-                <div className="bg-sky-100 flex-none hidden sm:grid grid-cols-12 border-b border-sky-300 text-sky-900 font-bold text-xs py-2 px-3">
-                  <div className="col-span-4">チェック項目</div>
-                  <div className="col-span-8">リスク・メリット / 改善案</div>
+            <div className="w-full max-w-5xl mx-auto">
+              <div className="overflow-hidden border border-sky-200 rounded-md shadow-sm flex flex-col">
+                <div className="bg-sky-100 hidden sm:grid sm:grid-cols-[90px_1fr_1.5fr] lg:grid-cols-[100px_1fr_1.5fr] gap-x-4 border-b border-sky-300 text-sky-900 font-bold text-xs py-2 px-4 shadow-sm z-10">
+                  <div className="whitespace-nowrap">番号・分類</div>
+                  <div>チェック項目</div>
+                  <div>リスク・メリット / 改善案</div>
                 </div>
-                <div className="flex-grow flex flex-col divide-y divide-gray-100 h-full overflow-y-auto min-h-0">
+                <div className="flex flex-col divide-y divide-gray-100">
                   {chunk.items.map((item, itemIdx) => (
-                    <div key={itemIdx} className="flex-1 flex flex-col sm:grid sm:grid-cols-12 items-start justify-center py-2.5 sm:py-3 px-2 sm:px-4 hover:bg-sky-50 transition-colors">
+                    <div key={itemIdx} className="grid grid-cols-[auto_1fr] sm:grid-cols-[90px_1fr_1.5fr] lg:grid-cols-[100px_1fr_1.5fr] gap-x-2 sm:gap-x-4 gap-y-1 sm:gap-y-0 items-start py-3 sm:py-4 px-3 sm:px-4 hover:bg-sky-50 transition-colors">
                       
-                      <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:col-span-4 mb-1.5 sm:mb-0 w-full pr-2 shrink-0">
-                        <div className="shrink-0 flex items-center">
-                          {item.type === "安全" ? (
-                            <span className="bg-red-100 text-red-700 px-1.5 py-0.5 rounded text-[10px] sm:text-[11px] border border-red-200 font-extrabold leading-none shadow-sm">⚠安全</span>
-                          ) : (
-                            <span className="bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded text-[10px] sm:text-[11px] border border-blue-200 font-extrabold leading-none shadow-sm">✨快適</span>
-                          )}
-                        </div>
-                        <span className="font-bold text-[14px] sm:text-[16px] text-gray-800 leading-snug break-words whitespace-normal">{item.item}</span>
+                      {/* Col 1: Number + Mark */}
+                      <div className="col-span-1 sm:col-auto flex items-start pt-0.5 whitespace-nowrap pr-2 sm:pr-0">
+                        <span className="font-bold text-[14px] sm:text-[15px] text-sky-600 mr-1.5">{chunk.startIdx + itemIdx}.</span>
+                        {item.type === "安全" ? (
+                          <span className="inline-block bg-red-100 text-red-700 px-1.5 py-0.5 rounded text-[10px] sm:text-[11px] border border-red-200 font-extrabold leading-none shadow-sm">⚠安全</span>
+                        ) : (
+                          <span className="inline-block bg-blue-100 text-blue-700 px-1.5 py-0.5 rounded text-[10px] sm:text-[11px] border border-blue-200 font-extrabold leading-none shadow-sm">✨快適</span>
+                        )}
                       </div>
                       
-                      <div className="flex flex-col sm:col-span-8 justify-center w-full pl-0 sm:pl-2">
-                        <div className="text-[12px] sm:text-[14px] text-gray-700 leading-snug break-words whitespace-normal mt-0.5">
+                      {/* Col 2: Item Name */}
+                      <div className="col-span-1 sm:col-auto font-bold text-[14px] sm:text-[16px] text-gray-800 leading-snug break-words pt-0.5">
+                        {item.item}
+                      </div>
+                      
+                      {/* Col 3: Risk & Solution */}
+                      <div className="col-start-2 sm:col-start-auto col-span-1 sm:col-auto flex flex-col justify-start w-full text-[12px] sm:text-[14px] mt-0.5 sm:mt-0">
+                        <div className="text-gray-700 leading-snug break-words whitespace-normal">
                           {item.type === "安全" ? (
-                            <span className="font-bold opacity-70 mr-1 text-[10px] sm:hidden inline-block text-red-600">影響:</span>
+                            <span className="font-bold opacity-70 mr-1.5 text-[10px] sm:hidden inline-block text-red-600 w-[2.8em]">影響:</span>
                           ) : (
-                            <span className="font-bold opacity-70 mr-1 text-[10px] sm:hidden inline-block text-blue-600">目的:</span>
+                            <span className="font-bold opacity-70 mr-1.5 text-[10px] sm:hidden inline-block text-blue-600 w-[2.8em]">目的:</span>
                           )}
                           {item.risk}
                         </div>
-                        <div className="text-[12px] sm:text-[14px] text-emerald-700 font-medium leading-snug break-words whitespace-normal mt-0.5 sm:mt-1">
-                          <span className="font-bold opacity-70 mr-1 text-[10px] sm:hidden inline-block text-emerald-600">解決案:</span>
+                        <div className="text-emerald-700 font-medium leading-snug break-words whitespace-normal mt-0.5 sm:mt-1">
+                          <span className="font-bold opacity-70 mr-1.5 text-[10px] sm:hidden inline-block text-emerald-600 w-[2.8em]">解決案:</span>
                           {item.solution}
                         </div>
                       </div>
@@ -166,12 +175,11 @@ export default function K10325Page() {
                 </div>
               </div>
             </div>
-            <div className="text-center text-[9px] text-gray-400 absolute bottom-1 w-full left-0">↓ スワイプして次へ</div>
           </section>
         ))}
 
-        {/* FINAL PAGE: CTA + FOOTER */}
-        <section className="h-[100dvh] w-full snap-start shrink-0 flex flex-col relative bg-sky-50 justify-center">
+        {/* CTA + FOOTER */}
+        <section className="w-full flex flex-col relative bg-sky-50 justify-center min-h-[50vh] pt-12">
           <div className="max-w-4xl mx-auto w-full px-4 flex-grow flex flex-col items-center justify-center">
             
             <div className="bg-gradient-to-t from-sky-800 to-sky-600 text-white py-6 md:py-10 px-4 text-center rounded-2xl shadow-xl w-full mb-6">
