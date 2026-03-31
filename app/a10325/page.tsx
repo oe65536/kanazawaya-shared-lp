@@ -38,108 +38,112 @@ const overlayData = [
 
 export default function A10325Page() {
   return (
-    <div className="min-h-screen bg-[#f0f9ff] font-sans text-gray-800 flex flex-col">
+    <div className="h-[100dvh] overflow-y-auto overflow-x-hidden snap-y snap-mandatory bg-sky-50 font-sans text-gray-800 flex flex-col scroll-smooth">
       {/* SIGNBOARD BANNER (トップ画像) */}
-      <div className="w-full shadow-lg">
+      <section className="w-full shadow-lg snap-start shrink-0">
         <img
           src="/kanban1.jpg"
           alt="金沢屋 看板"
           className="w-full aspect-[768/328] object-cover object-top"
         />
-      </div>
+      </section>
 
       {/* MAIN CONTENT AREA */}
-      <main className="flex-grow w-full max-w-5xl mx-auto flex flex-col items-center px-4 sm:px-0">
+      <main className="flex-grow w-full max-w-5xl mx-auto flex flex-col items-center">
         
         {/* === 1ページ目 (全体表示＋最上段・最下段テキスト) === */}
-        <section className="w-full bg-white shadow-xl relative block mb-8">
-          <div className="relative w-full h-auto">
-            {/* Main Background Image - フル表示 */}
-            <img 
-              src="/a10325ba.png" 
-              alt="ビフォーアフター 全体" 
-              className="w-full h-auto block"
-            />
-            
-            {/* 24分割グリッドで上下1/24の場所にテキストを配置 */}
-            <div 
-              className="absolute inset-0 grid"
-              style={{ gridTemplateRows: "repeat(24, minmax(0, 1fr))" }}
-            >
-              {/* 最上段 (1番目の行) - Before / After はそのままの書体 */}
-              <div 
-                className="flex items-center justify-around w-full"
-                style={{ gridRowStart: 1 }}
-              >
-                <div className="w-1/2 flex justify-center">
-                  <span className="text-2xl sm:text-4xl md:text-5xl font-black text-white drop-shadow-md tracking-wider">
-                    Before
-                  </span>
-                </div>
-                <div className="w-1/2 flex justify-center">
-                  <span className="text-2xl sm:text-4xl md:text-5xl font-black text-white drop-shadow-md tracking-wider">
-                    After
-                  </span>
-                </div>
-              </div>
+        <section className="w-full min-h-[100dvh] flex flex-col justify-center snap-start shrink-0 px-2 sm:px-4 py-8">
+          <div className="w-full bg-white shadow-2xl relative block overflow-hidden rounded-md">
+            <div className="relative w-full h-auto">
+              {/* Main Background Image - フル表示 */}
+              <img 
+                src="/a10325ba.png" 
+                alt="ビフォーアフター 全体" 
+                className="w-full h-auto block"
+              />
               
-              {/* 最下段 (24番目の行) - ここから草書体風 */}
+              {/* 24分割グリッドで上下1/24の場所にテキストを配置 */}
               <div 
-                className="flex items-center justify-center w-full"
-                style={{ gridRowStart: 24 }}
+                className="absolute inset-0 grid"
+                style={{ gridTemplateRows: "repeat(24, minmax(0, 1fr))" }}
               >
-                <p 
-                  className="text-lg sm:text-3xl md:text-4xl font-normal text-white drop-shadow-lg tracking-widest"
-                  style={{ fontFamily: "'HG草書体', 'HG行書体', 'HGS行書体', 'ヒラギノ行書 W4', serif" }}
+                {/* 最上段 (1番目の行) - Before / After はそのままの書体 */}
+                <div 
+                  className="flex items-center justify-around w-full"
+                  style={{ gridRowStart: 1 }}
                 >
-                  替えるだけで、毎日が変わる
-                </p>
+                  <div className="w-1/2 flex justify-center">
+                    <span className="text-2xl sm:text-4xl md:text-5xl font-black text-white drop-shadow-md tracking-wider">
+                      Before
+                    </span>
+                  </div>
+                  <div className="w-1/2 flex justify-center">
+                    <span className="text-2xl sm:text-4xl md:text-5xl font-black text-white drop-shadow-md tracking-wider">
+                      After
+                    </span>
+                  </div>
+                </div>
+                
+                {/* 最下段 (24番目の行) - ここから草書体風 */}
+                <div 
+                  className="flex items-center justify-center w-full"
+                  style={{ gridRowStart: 24 }}
+                >
+                  <p 
+                    className="text-lg sm:text-3xl md:text-4xl font-normal text-white drop-shadow-lg tracking-widest"
+                    style={{ fontFamily: "'HG草書体', 'HG行書体', 'HGS行書体', 'ヒラギノ行書 W4', serif" }}
+                  >
+                    替えるだけで、毎日が変わる
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* === 2ページ目 (既存: 上下カット + 6等分テキストオーバーレイ) === */}
-        <section className="w-full bg-white shadow-xl relative block mb-12">
-          {/*
-            元の画像サイズは 幅1414 × 高さ2000。
-            上下1/24ずつカット（表示領域は22/24の高さ）するため、
-            コンテナのアスペクト比を「1414 / (2000 * 22 / 24)」= 1414 / 1833.3333 に設定。
-          */}
-          <div 
-            className="relative w-full overflow-hidden"
-            style={{ aspectRatio: "1414 / 1833.3333" }}
-          >
-            {/* Main Background Image */}
-            <img 
-              src="/a10325ba.png" 
-              alt="ビフォーアフター 詳細" 
-              className="absolute w-full h-auto left-0"
-              style={{ top: "calc(100% * -1 / 22)" }} 
-            />
-
-            {/* 画像を暗くするオーバーレイ (文字を見やすくするため) */}
-            <div className="absolute inset-0 bg-black/60 pointer-events-none"></div>
-
-            {/* Text Overlays in 6 equal rows - 草書体風 */}
+        <section className="w-full min-h-[100dvh] flex flex-col justify-center snap-start shrink-0 px-2 sm:px-4 py-8">
+          <div className="w-full bg-white shadow-2xl relative block overflow-hidden rounded-md">
+            {/*
+              元の画像サイズは 幅1414 × 高さ2000。
+              上下1/24ずつカット（表示領域は22/24の高さ）するため、
+              コンテナのアスペクト比を「1414 / (2000 * 22 / 24)」= 1414 / 1833.3333 に設定。
+            */}
             <div 
-              className="absolute inset-0 grid grid-rows-6"
-              style={{ fontFamily: "'HG草書体', 'HG行書体', 'HGS行書体', 'ヒラギノ行書 W4', serif" }}
+              className="relative w-full overflow-hidden"
+              style={{ aspectRatio: "1414 / 1833.3333" }}
             >
-              {overlayData.map((item, index) => (
-                <div key={index} className="flex flex-col justify-center w-full h-full px-6 sm:px-10 md:px-16 text-left">
-                  <h2 className="text-lg sm:text-2xl md:text-3xl font-normal text-white mt-1 mb-1 md:mb-2 drop-shadow-lg">
-                    {item.title}
-                  </h2>
-                  <div className="w-full">
-                    {item.text.split('\n').map((line, i) => (
-                      <p key={i} className="text-xs sm:text-base md:text-xl text-white font-normal leading-relaxed drop-shadow-lg">
-                        {line}
-                      </p>
-                    ))}
+              {/* Main Background Image */}
+              <img 
+                src="/a10325ba.png" 
+                alt="ビフォーアフター 詳細" 
+                className="absolute w-full h-auto left-0"
+                style={{ top: "calc(100% * -1 / 22)" }} 
+              />
+
+              {/* 画像を暗くするオーバーレイ (文字を見やすくするため) - 薄めに調整 */}
+              <div className="absolute inset-0 bg-black/20 pointer-events-none"></div>
+
+              {/* Text Overlays in 6 equal rows - 草書体風 */}
+              <div 
+                className="absolute inset-0 grid grid-rows-6"
+                style={{ fontFamily: "'HG草書体', 'HG行書体', 'HGS行書体', 'ヒラギノ行書 W4', serif" }}
+              >
+                {overlayData.map((item, index) => (
+                  <div key={index} className="flex flex-col justify-center w-full h-full px-6 sm:px-10 md:px-16 text-left">
+                    <h2 className="text-lg sm:text-2xl md:text-3xl font-normal text-white mt-1 mb-1 md:mb-2 drop-shadow-lg">
+                      {item.title}
+                    </h2>
+                    <div className="w-full">
+                      {item.text.split('\n').map((line, i) => (
+                        <p key={i} className="text-xs sm:text-base md:text-xl text-white font-normal leading-relaxed drop-shadow-lg">
+                          {line}
+                        </p>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
         </section>
@@ -147,7 +151,7 @@ export default function A10325Page() {
       </main>
 
       {/* FOOTER */}
-      <footer className="bg-sky-900 text-sky-200 py-10 px-4 text-center border-t border-sky-800 mt-auto">
+      <footer className="bg-sky-900 text-sky-200 py-10 px-4 text-center border-t border-sky-800 snap-start shrink-0 mt-auto">
         <div className="mb-6 space-y-2">
           <p className="text-sky-300 font-bold mb-2">お電話でのご相談・お見積り（無料）</p>
           <a href="tel:0120-759-010" className="text-3xl md:text-5xl font-black text-white hover:text-sky-300 transition-colors inline-flex items-center gap-2">
